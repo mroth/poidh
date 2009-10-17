@@ -1,0 +1,36 @@
+Sheryl67 wants pix of jer_: About to entirely fail to break a board with my hand with Dawn and Greg.
+[private tweet]
+[private tweet]
+[private tweet]
+matijs wants pix of anna_debenham: Leaned too far back, chair folded and ended up as heap of metal and limbs. While writing this, I've got my toe stuck in the radiator. Fail.
+-----------------
+POIDH twitter history search
+
+match @username poidh ***
+find post it was in reply to
+list of things people want pics of
+
+okay, this will be SLOW without extra api method
+and not have much history until they fix twitter search
+so
+make a DB table, and dump entries to it
+query periodically, add new entries to table (keep ts of last update)
+page cache output (how to flush cache?)
+
+INSTEAD -- push to a tumblog, ask readers to submit THEIR pics of it.
+
+sign in via twitter
+capture webcam?
+----------------
+generate scaffold Tweet 
+observer_id:integer
+observer_msg_id:integer 
+observer_screenname:text 
+observer_avatar_url:text 
+observer_msg:string 
+
+culprit_id:integer
+culprit_msg_id:integer
+culprit_screenname:text
+culprit_avatar_url:text
+culprit_msg:string

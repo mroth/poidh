@@ -1,0 +1,65 @@
+<h1>POIDH!</h1>
+<ol id="timeline">
+<% @tweets.each do |tweet| %>
+	<li id='tweet-<%= tweet.culprit_msg_id -%>' class='tweet'>
+		<div class="culprit_avatar"><%= image_tag(tweet.culprit_avatar_url, :size => '48x48') -%></div>
+		<div class="culprit_msg">
+			<b><%= tweet.culprit_screen_name -%>:</b>
+			<%= tweet.culprit_msg %>
+			<span class="timestamp"><%= tweet.culprit_msg_timestamp %></span>
+		</div>
+		<span class="observer">
+			<%= image_tag(tweet.observer_avatar_url, :size => "24x24") -%>
+			<%= linked_screenname tweet.observer_screen_name -%> wants pics!
+		</span>
+		<!-- <span class="contribute">
+			<a href="#">(contribute)</a>
+		</span> -->
+	</li>
+<% end %>
+</ol>
+
+<!-- OLD SHIT BELOW HERE -->
+<% if false %>
+<hr/>
+<h1>Listing tweets</h1>
+
+<table>
+  <tr>
+	<th>Timestamp</th>
+    <th>Observer</th>
+    <th>Observer msg</th>
+    <th>Observer screen name</th>
+    <th>Observer avatar url</th>
+    <th>Observer msg</th>
+    <th>Culprit</th>
+    <th>Culprit msg</th>
+    <th>Culprit screen name</th>
+    <th>Culprit avatar url</th>
+    <th>Culprit msg</th>
+  </tr>
+
+<% @tweets.each do |tweet| %>
+  <tr>
+	<td><%=h tweet.observer_msg_timestamp %></td>
+    <td><%=h tweet.observer_id %></td>
+    <td><%=h tweet.observer_msg_id %></td>
+    <td><%=h tweet.observer_screen_name %></td>
+    <td><%=h tweet.observer_avatar_url %></td>
+    <td><%=h tweet.observer_msg %></td>
+    <td><%=h tweet.culprit_id %></td>
+    <td><%=h tweet.culprit_msg_id %></td>
+    <td><%=h tweet.culprit_screen_name %></td>
+    <td><%=h tweet.culprit_avatar_url %></td>
+    <td><%=h tweet.culprit_msg %></td>
+    <td><%= link_to 'Show', tweet %></td>
+    <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
+    <td><%= link_to 'Destroy', tweet, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New tweet', new_tweet_path %>
+<% end %>

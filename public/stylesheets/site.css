@@ -1,0 +1,20 @@
+#timeline {
+	width: 500px;
+}
+
+#timeline li {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px dashed gray;
+}
+#timeline li .culprit_msg .timestamp {
+	color: gray;
+	font-size: smaller;
+}
+#timeline li .observer {
+	font-style: italic;
+}
+#timeline li .contribute {
+
+	
+}

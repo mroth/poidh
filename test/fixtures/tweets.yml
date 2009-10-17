@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  observer_id: 1
+  observer_msg_id: 1
+  observer_screenname: MyString
+  observer_avatar_url: MyString
+  observer_msg: MyString
+  culprit_id: 1
+  culprit_msg_id: 1
+  culprit_screenname: MyString
+  culprit_avatar_url: MyString
+  culprit_msg: MyString
+
+two:
+  observer_id: 1
+  observer_msg_id: 1
+  observer_screenname: MyString
+  observer_avatar_url: MyString
+  observer_msg: MyString
+  culprit_id: 1
+  culprit_msg_id: 1
+  culprit_screenname: MyString
+  culprit_avatar_url: MyString
+  culprit_msg: MyString

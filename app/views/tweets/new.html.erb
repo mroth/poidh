@@ -1,0 +1,51 @@
+<h1>New tweet</h1>
+
+<% form_for(@tweet) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :observer_id %><br />
+    <%= f.text_field :observer_id %>
+  </p>
+  <p>
+    <%= f.label :observer_msg_id %><br />
+    <%= f.text_field :observer_msg_id %>
+  </p>
+  <p>
+    <%= f.label :observer_screen_name %><br />
+    <%= f.text_field :observer_screen_name %>
+  </p>
+  <p>
+    <%= f.label :observer_avatar_url %><br />
+    <%= f.text_field :observer_avatar_url %>
+  </p>
+  <p>
+    <%= f.label :observer_msg %><br />
+    <%= f.text_field :observer_msg %>
+  </p>
+  <p>
+    <%= f.label :culprit_id %><br />
+    <%= f.text_field :culprit_id %>
+  </p>
+  <p>
+    <%= f.label :culprit_msg_id %><br />
+    <%= f.text_field :culprit_msg_id %>
+  </p>
+  <p>
+    <%= f.label :culprit_screen_name %><br />
+    <%= f.text_field :culprit_screen_name %>
+  </p>
+  <p>
+    <%= f.label :culprit_avatar_url %><br />
+    <%= f.text_field :culprit_avatar_url %>
+  </p>
+  <p>
+    <%= f.label :culprit_msg %><br />
+    <%= f.text_field :culprit_msg %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', tweets_path %>

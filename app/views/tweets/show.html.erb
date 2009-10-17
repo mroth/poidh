@@ -1,0 +1,53 @@
+<p>
+  <b>Observer:</b>
+  <%=h @tweet.observer_id %>
+</p>
+
+<p>
+  <b>Observer msg:</b>
+  <%=h @tweet.observer_msg_id %>
+</p>
+
+<p>
+  <b>Observer screenname:</b>
+  <%=h @tweet.observer_screen_name %>
+</p>
+
+<p>
+  <b>Observer avatar url:</b>
+  <%=h @tweet.observer_avatar_url %>
+</p>
+
+<p>
+  <b>Observer msg:</b>
+  <%=h @tweet.observer_msg %>
+</p>
+
+<p>
+  <b>Culprit:</b>
+  <%=h @tweet.culprit_id %>
+</p>
+
+<p>
+  <b>Culprit msg:</b>
+  <%=h @tweet.culprit_msg_id %>
+</p>
+
+<p>
+  <b>Culprit screenname:</b>
+  <%=h @tweet.culprit_screen_name %>
+</p>
+
+<p>
+  <b>Culprit avatar url:</b>
+  <%=h @tweet.culprit_avatar_url %>
+</p>
+
+<p>
+  <b>Culprit msg:</b>
+  <%=h @tweet.culprit_msg %>
+</p>
+
+
+<%= link_to 'Edit', edit_tweet_path(@tweet) %> |
+<%= link_to 'Back', tweets_path %>
