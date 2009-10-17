@@ -58,7 +58,10 @@ end
 ##### stuff from railscasts
 namespace :deploy do
   desc "Tell Passenger to restart the app."
-  task :restart do
+  #task :restart do
+  task :start {}
+  task :stop {}
+  task :restart, :roles => :app, :except => { :no_release => true } do
     run "touch #{current_path}/tmp/restart.txt"
   end
   
