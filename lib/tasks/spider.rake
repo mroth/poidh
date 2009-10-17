@@ -12,12 +12,17 @@ namespace :twitter do
     oauth = Twitter::OAuth.new(key, secret)
     client = Twitter::Base.new(oauth)
     
-    Twitter::Search.new('POIDH').each do |r| #TODO: make this only check since timestamp of most recent in DB
+    most_recent = Tweet.find(:first, :order => 'observer_msg_timestamp DESC', :limit => 1).observer_msg_id
+    ts = Twitter::Search.new('POIDH').since(most_recent)
+    puts "#{ts.count} search results since last timestamp to evaluate..."
+    ts.each do |r|
       #sanity check, is the tweet already in our dataset? (checking DB is faster than making more API calls)
       if !Tweet.find_by_observer_msg_id(r.id)
         #get the details of both tweets
         begin
-          observer = client.status(r.id)
+          observer = client.status(r.id) 
+          #TODO: it'd be awesome for efficiency if we got reply status back above without having to hit REST API, 
+          # so need to bug Ryan about this since search api sucks.
           if observer.in_reply_to_status_id.nil?
             puts "[---: Candidate tweet was not in_reply to another tweet.]"
           else
