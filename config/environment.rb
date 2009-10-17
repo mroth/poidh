@@ -23,10 +23,11 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   #config.gem "twitter"
-  config.gem 'jnunemaker-twitter',       :lib => 'twitter', :source => 'http://gems.github.com'
+  config.gem 'jnunemaker-twitter', :lib => 'twitter', :source => 'http://gems.github.com'
+  config.gem 'javan-whenever', :lib => false, :source => 'http://gems.github.com'
   # config.gem 'mislav-will_paginate',    :lib => 'will_paginate',  :source => 'http://gems.github.com'
   # config.gem 'thoughtbot-paperclip',    :lib => 'paperclip',      :source => 'http://gems.github.com'
-  # config.gem 'javan-whenever',          :lib => false,            :source => 'http://gems.github.com'
+
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
