@@ -1,13 +1,24 @@
-set :application, "set your application name here"
-set :repository,  "set your repository location here"
+#dreamhost stuff
+set :user, 'mroth'  # Your dreamhost account's username
+set :domain, 'poidh.org'  # Dreamhost servername where your account is located 
+set :project, 'poidh'  # Your application as its called in the repository
+set :application, 'poidh.org'  # Your app's location (domain or sub-domain name as setup in panel)
+set :applicationdir, "/home/#{user}/#{application}"  # The standard Dreamhost setup
 
-set :scm, :subversion
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+#github stuff
+set :repository, "git@github.com:mroth/poidh.git"
+set :scm, :git
+ssh_options[:forward_agent] = true
 
-role :web, "your web-server here"                          # Your HTTP server, Apache/etc
-role :app, "your app-server here"                          # This may be the same as your `Web` server
-role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
-role :db,  "your slave db-server here"
+
+# roles (servers)
+role :web, domain
+role :app, domain
+role :db,  domain, :primary => true
+
+# deploy config
+set :deploy_to, applicationdir
+set :deploy_via, :remote_cache
 
 # If you are using Passenger mod_rails uncomment this:
 # if you're still using the script/reapear helper you will need
@@ -20,3 +31,32 @@ role :db,  "your slave db-server here"
 #     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
 #   end
 # end
+
+##### stuff from railscasts
+namespace :deploy do
+  desc "Tell Passenger to restart the app."
+  task :restart do
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+  
+  desc "Symlink shared configs and folders on each release."
+  task :symlink_shared do
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/assets #{release_path}/public/assets"
+  end
+  
+  #desc "Sync the public/assets directory."
+  #task :assets do
+  #  system "rsync -vr --exclude='.DS_Store' public/assets #{user}@#{application}:#{shared_path}/"
+  #end
+  
+  # this one added as per http://railscasts.com/episodes/164-cron-in-ruby
+  desc "Update the crontab file"
+  task :update_crontab, :roles => :db do
+    run "cd #{release_path} && whenever --update-crontab #{application}"
+  end
+  
+end
+
+after 'deploy:update_code', 'deploy:symlink_shared'
+after "deploy:symlink", "deploy:update_crontab"
