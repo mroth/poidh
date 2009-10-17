@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091012023204) do
+ActiveRecord::Schema.define(:version => 20091017072008) do
 
   create_table "tweets", :force => true do |t|
     t.integer  "observer_id"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(:version => 20091012023204) do
   end
 
   add_index "tweets", ["culprit_msg_id"], :name => "index_tweets_on_culprit_msg_id"
+  add_index "tweets", ["culprit_msg_timestamp"], :name => "index_tweets_on_culprit_msg_timestamp"
   add_index "tweets", ["observer_msg_id"], :name => "index_tweets_on_observer_msg_id"
+  add_index "tweets", ["observer_msg_timestamp"], :name => "index_tweets_on_observer_msg_timestamp"
 
 end
