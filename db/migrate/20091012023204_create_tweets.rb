@@ -2,12 +2,12 @@ class CreateTweets < ActiveRecord::Migration
   def self.up
     create_table :tweets do |t|
       t.integer :observer_id
-      t.integer :observer_msg_id
+      t.integer :observer_msg_id, :limit => 8
       t.string :observer_screen_name
       t.string :observer_avatar_url
       t.string :observer_msg
       t.integer :culprit_id
-      t.integer :culprit_msg_id
+      t.integer :culprit_msg_id, :limit => 8
       t.string :culprit_screen_name
       t.string :culprit_avatar_url
       t.string :culprit_msg
