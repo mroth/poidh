@@ -8,7 +8,7 @@ set :applicationdir, "/home/#{user}/#{application}"  # The standard Dreamhost se
 #github stuff
 set :repository, "git@github.com:mroth/poidh.git"
 set :scm, :git
-#ssh_options[:forward_agent] = true
+ssh_options[:forward_agent] = true
 set :deploy_via, :remote_cache
 set :git_enable_submodules, 1 # if you have vendored rails
 set :branch, 'master'
@@ -74,12 +74,12 @@ namespace :deploy do
   #end
   
   # this one added as per http://railscasts.com/episodes/164-cron-in-ruby
-  desc "Update the crontab file"
-  task :update_crontab, :roles => :db do
-    run "cd #{release_path} && whenever --update-crontab #{application}"
-  end
+  # desc "Update the crontab file"
+  # task :update_crontab, :roles => :db do
+  #   run "cd #{release_path} && whenever --update-crontab #{application}"
+  # end
   
 end
 
 after 'deploy:update_code', 'deploy:symlink_shared'
-after "deploy:symlink", "deploy:update_crontab"
+#after "deploy:symlink", "deploy:update_crontab"
