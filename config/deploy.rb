@@ -8,8 +8,16 @@ set :applicationdir, "/home/#{user}/#{application}"  # The standard Dreamhost se
 #github stuff
 set :repository, "git@github.com:mroth/poidh.git"
 set :scm, :git
-ssh_options[:forward_agent] = true
+#ssh_options[:forward_agent] = true
+set :deploy_via, :remote_cache
+set :git_enable_submodules, 1 # if you have vendored rails
+set :branch, 'master'
+set :git_shallow_clone, 1
+set :scm_verbose, true
 
+#stuff for local git (from dreamhost cap tutorial)
+set :scm_command, "/home/mroth/packages/bin/git" #updated version of git on  server in user directory
+set :local_scm_command, "/opt/local/bin/git" #correct path to local git
 
 # roles (servers)
 role :web, domain
@@ -18,7 +26,22 @@ role :db,  domain, :primary => true
 
 # deploy config
 set :deploy_to, applicationdir
-set :deploy_via, :remote_cache
+
+# additional settings
+# default_run_options[:pty] = true  # Forgo errors when deploying from windows
+#ssh_options[:keys] = %w(/Users/mroth/.ssh/id_dsa /Users/mroth/.ssh/id_rsa)            # If you are using ssh_keys
+set :chmod755, "app config db lib public vendor script script/* public/disp*"
+set :use_sudo, false
+
+### stuff to snoop on environment vars
+desc "Echo environment vars" 
+namespace :env do
+  task :echo do
+    run "echo printing out cap info on remote server"
+    run "echo $PATH"
+    run "printenv"
+  end
+end
 
 # If you are using Passenger mod_rails uncomment this:
 # if you're still using the script/reapear helper you will need
