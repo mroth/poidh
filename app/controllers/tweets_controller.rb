@@ -2,7 +2,7 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.xml
   def index
-    @tweets = Tweet.find(:all, :order => 'created_at DESC')
+    @tweets = Tweet.find(:all, :order => 'observer_msg_timestamp DESC')
 
     respond_to do |format|
       format.html # index.html.erb
