@@ -12,8 +12,12 @@ namespace :twitter do
     oauth = Twitter::OAuth.new(key, secret)
     client = Twitter::Base.new(oauth)
     
-    most_recent = Tweet.find(:first, :order => 'observer_msg_timestamp DESC', :limit => 1).observer_msg_id
-    ts = Twitter::Search.new('POIDH').since(most_recent)
+    most_recent = Tweet.find(:first, :order => 'observer_msg_timestamp DESC', :limit => 1)
+    if most_recent.nil? #nothing in database yet
+      ts = Twitter::Search.new('POIDH')
+    else
+      ts = Twitter::Search.new('POIDH').since(most_recent.observer_msg_id)
+    end
     puts "#{ts.count} search results since last timestamp to evaluate..."
     ts.each do |r|
       #sanity check, is the tweet already in our dataset? (checking DB is faster than making more API calls)
