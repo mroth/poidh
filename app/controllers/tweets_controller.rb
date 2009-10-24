@@ -2,6 +2,7 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.xml
   def index
+    @title = "POIDH: pics or it didn't happen! (from twitter)"
     @tweets = Tweet.find(:all, :order => 'observer_msg_timestamp DESC')
 
     respond_to do |format|
