@@ -1,21 +1,26 @@
 == POIDH
 
-Website for POIDH project.
+http://poidh.org
+Pics or it didn't happen!
 
-POIDH twitter history search
 
-match @username poidh ***
-find post it was in reply to
-list of things people want pics of
+== TLDR
+spider twitter search api
+match "@username poidh.*"
+was it a reply? if so, find tweet it was in_reply to
+log it
+bingo!  a list of things people want pics of.
 
-okay, this will be SLOW without extra api method
+== Random notes
+Okay, this will be slow without extra params in twitter search API (needs extras!)
 and not have much history until they fix twitter search
 so
 make a DB table, and dump entries to it
 query periodically, add new entries to table (keep ts of last update)
-page cache output (how to flush cache?)
+page cache output? (how to flush cache?)
 
-INSTEAD -- push to a tumblog, ask readers to submit THEIR pics of it.
-
-sign in via twitter
-capture webcam?
+== Eventually
+push to a tumblog, ask readers to submit THEIR pics of it.
+login via twitter_auth
+capture via webcam?
+notifications via twitter bot
