@@ -1,4 +1,4 @@
-<ol id="timeline">
+<ul id="timeline">
 <% @tweets.each do |tweet| %>
 	<li id='tweet-<%= tweet.culprit_msg_id -%>' class='tweet'>
 		<div class="culprit_avatar"><%= image_tag(tweet.culprit_avatar_url, :size => '48x48') -%></div>
@@ -16,4 +16,8 @@
 		</span> -->
 	</li>
 <% end %>
-</ol>
+</ul>
+
+
+<%= will_paginate @tweets, :next_label => "Older »", :previous_label => "« Recent" %>
+<%= page_entries_info @tweets, :entry_name => "item" %>

@@ -3,7 +3,8 @@ class TweetsController < ApplicationController
   # GET /tweets.xml
   def index
     @title = "POIDH: pics or it didn't happen! (from twitter)"
-    @tweets = Tweet.find(:all, :order => 'observer_msg_timestamp DESC')
+    #@tweets = Tweet.find(:all, :order => 'observer_msg_timestamp DESC')
+    @tweets = Tweet.paginate(:per_page => 20, :page => params[:page], :order => 'observer_msg_timestamp DESC')
 
     respond_to do |format|
       format.html # index.html.erb
