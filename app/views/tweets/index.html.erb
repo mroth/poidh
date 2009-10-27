@@ -1,14 +1,14 @@
 <ul id="timeline">
 <% @tweets.each do |tweet| %>
 	<li id='tweet-<%= tweet.culprit_msg_id -%>' class='tweet'>
-		<div class="culprit_avatar"><%= image_tag(tweet.culprit_avatar_url, :size => '48x48') -%></div>
+		<div class="culprit_avatar"><%= twitter_avatar_img tweet.culprit_screen_name %></div>
 		<div class="culprit_msg">
 			<b><%= linked_screenname tweet.culprit_screen_name -%>:</b>
 			<%= tweet.culprit_msg %>
 			<span class="timestamp"><%= tweet.culprit_msg_timestamp %></span>
 		</div>
 		<span class="observer">
-			<%= image_tag(tweet.observer_avatar_url, :size => "24x24") -%>
+			<%= twitter_avatar_mini_img tweet.observer_screen_name -%>
 			<%= linked_screenname tweet.observer_screen_name -%> says <%= link_to "POIDH!", tweet.observer_msg_url, :title => tweet.observer_msg %>
 		</span>
 		<!-- <span class="contribute">
