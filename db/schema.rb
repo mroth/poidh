@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20091028025801) do
     t.integer  "rejected_private"
     t.integer  "rejected_not_reply"
     t.integer  "rejected_already_indexed"
-    t.integer  "most_recent_seen"
+    t.integer  "most_recent_seen",         :limit => 8
     t.datetime "created_at"
     t.datetime "updated_at"
   end

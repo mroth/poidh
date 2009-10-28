@@ -6,7 +6,7 @@ class CreateSearches < ActiveRecord::Migration
       t.integer :rejected_private
       t.integer :rejected_not_reply
       t.integer :rejected_already_indexed
-      t.integer :most_recent_seen
+      t.integer :most_recent_seen, :limit => 8
       
       t.timestamps
     end
