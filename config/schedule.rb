@@ -3,6 +3,8 @@
 # It's helpful, but not entirely necessary to understand cron before proceeding.
 # http://en.wikipedia.org/wiki/Cron
 
+env :MAILTO, "mrothenberg@gmail.com" #lets see some debug output for now
+
 every 15.minutes do
   rake "twitter:spider"
 end
