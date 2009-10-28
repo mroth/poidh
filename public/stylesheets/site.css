@@ -1,4 +1,6 @@
-
+h1 img {
+	border: 0;
+}
 #timeline {
 	width: 500px;
 }
