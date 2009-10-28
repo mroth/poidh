@@ -24,7 +24,7 @@ namespace :twitter do
     matched, rejected_private, rejected_not_reply, rejected_already_indexed = 0,0,0,0
     
     puts "#{ts.count} search results since last timestamp to evaluate..."
-    if ts.count > 0
+    #if ts.count > 0
       ts.each do |r|
         #sanity check, is the tweet already in our dataset? (checking DB is faster than making more API calls)
         if !Tweet.find_by_observer_msg_id(r.id)
@@ -73,10 +73,10 @@ namespace :twitter do
         :rejected_already_indexed => rejected_already_indexed,
         :rejected_private => rejected_private,
         :rejected_not_reply => rejected_not_reply,
-        :most_recent_seen => ts.first.id
+        :most_recent_seen => (ts.first.nil? ? most_recent.most_recent_seen : ts.first.id)
       )
       sr.save
-    end
+    #end
   end
   
 end
