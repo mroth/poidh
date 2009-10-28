@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  candidates: 1
+  matched: 1
+  rejected_private: 1
+  rejected_not_reply: 1
+  rejected_already_indexed: 1
+
+two:
+  candidates: 1
+  matched: 1
+  rejected_private: 1
+  rejected_not_reply: 1
+  rejected_already_indexed: 1
