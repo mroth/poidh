@@ -3,7 +3,7 @@
 # It's helpful, but not entirely necessary to understand cron before proceeding.
 # http://en.wikipedia.org/wiki/Cron
 
-every 1.hour do
+every 10.minutes do
   rake "twitter:spider"
 end
 
