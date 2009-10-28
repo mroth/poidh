@@ -11,12 +11,14 @@ namespace :twitter do
     secret = 'Yh0kpGj6bA5A43SRg6TrVmMA7oVRo1zGvjKySi2AM'
     oauth = Twitter::OAuth.new(key, secret)
     client = Twitter::Base.new(oauth)
+    term = "poidh OR \"pics or it didn't happen\""
+    
     
     most_recent = Tweet.find(:first, :order => 'observer_msg_timestamp DESC', :limit => 1)
     if most_recent.nil? #nothing in database yet
-      ts = Twitter::Search.new('POIDH')
+      ts = Twitter::Search.new(term)
     else
-      ts = Twitter::Search.new('POIDH').since(most_recent.observer_msg_id)
+      ts = Twitter::Search.new(term).since(most_recent.observer_msg_id)
     end
     puts "#{ts.count} search results since last timestamp to evaluate..."
     ts.each do |r|
