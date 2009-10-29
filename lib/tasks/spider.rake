@@ -7,6 +7,14 @@ namespace :twitter do
     end
   end
   
+  desc "Check to see how shitty the search API is today."
+  task :bughunt => :environment do
+    most_recent = Search.last
+    term = "poidh OR \"pics or it didn't happen\" OR \"pics or it didnt happen\""
+    ts = Twitter::Search.new(term).since(most_recent.most_recent_seen)
+    puts "Twitter sees #{(ts.count==0) ? "ZERO" : ts.count} candidates since #{most_recent.created_at}! (compare with webpage)"
+  end
+  
   desc "Spider and add new updates to the database"
   task :spider => :environment do
     #TODO: move me to a config file
@@ -20,9 +28,14 @@ namespace :twitter do
     #most_recent = Tweet.find(:first, :order => 'observer_msg_timestamp DESC', :limit => 1)
     most_recent = Search.last
     if most_recent.nil? #nothing in database yet
+      most_recent_id = 0
       ts = Twitter::Search.new(term)
     else
-      ts = Twitter::Search.new(term).since(most_recent.most_recent_seen)
+      most_recent_id = most_recent.most_recent_seen
+      #ts = Twitter::Search.new(term).since(most_recent.most_recent_seen)
+      #REVERT goddamnit, twitter search API is so broken right now that above is always returning zero results
+      #instead, we're just going to pull the most recent EVERY TIME and waste a shitload of API calls, sigh
+      ts = Twitter::Search.new(term)
     end
     matched, rejected_private, rejected_not_reply, rejected_already_indexed = 0,0,0,0
     
@@ -30,7 +43,9 @@ namespace :twitter do
     #if ts.count > 0
       ts.each do |r|
         #sanity check, is the tweet already in our dataset? (checking DB is faster than making more API calls)
-        if !Tweet.find_by_observer_msg_id(r.id)
+        #if !Tweet.find_by_observer_msg_id(r.id)
+        #REVERT since we are doing things the shitty way now, instead we just see if it's newer than we've seen before
+        if (r.id > most_recent_id)
           #get the details of both tweets
           begin
             observer = client.status(r.id) 
@@ -66,7 +81,7 @@ namespace :twitter do
             rejected_private+=1
           end
         else
-          puts "[***: Update already in database.]"
+          puts "[***: Update already in database (or older).]"
           rejected_already_indexed+=1
         end    
       end
