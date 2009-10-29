@@ -1,7 +1,10 @@
 namespace :twitter do
-  desc "Test case"
-  task :test do
-    puts "test"
+  
+  desc "Show log of most recent searches"
+  task :log => :environment do
+    Search.all.each do |sr|
+      puts "#{sr.id} (#{sr.created_at}): #{sr.candidates} candidates, #{sr.matched} matched."
+    end
   end
   
   desc "Spider and add new updates to the database"
