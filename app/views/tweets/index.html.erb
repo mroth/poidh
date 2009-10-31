@@ -15,6 +15,10 @@
 <% end %>
 </ul>
 
+<div id="sparkline">
+	<%= Gchart.sparkline(:data => @sparkvals.values, :size => '100x20', :line_colors => '0077CC', :format => 'image_tag') %>
+</div>
+
 
 <%= will_paginate @tweets, :next_label => "Older »", :previous_label => "« Recent" %>
 <%= page_entries_info @tweets, :entry_name => "item" %>
