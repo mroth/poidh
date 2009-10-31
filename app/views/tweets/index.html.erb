@@ -5,7 +5,7 @@
 		<div class="culprit_msg">
 			<b><%= linked_screenname tweet.culprit_screen_name -%>:</b>
 			<%= tweet.culprit_msg %>
-			<span class="timestamp"><%= tweet.culprit_msg_timestamp %></span>
+			<span class="timestamp"><%= time_ago_in_words tweet.culprit_msg_timestamp -%> ago</span>
 		</div>
 		<span class="observer">
 			<%= twitter_avatar_mini_img tweet.observer_screen_name -%>
