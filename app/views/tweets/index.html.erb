@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= auto_discovery_link_tag(:rss, formatted_tweets_url(:rss), :title => "Most recent POIDH") -%>
+<% end %>
+
 <ul id="timeline">
 <% @tweets.each do |tweet| %>
 	<li id='tweet-<%= tweet.culprit_msg_id -%>' class='tweet'>
@@ -24,6 +28,6 @@
 	<%= Gchart.sparkline(:data => @sparkvals.values, :size => '100x20', :line_colors => '0077CC', :format => 'image_tag') %>
 </div>
 
-
-<%= will_paginate @tweets, :next_label => "Older »", :previous_label => "« Recent" %>
+<%= will_paginate @tweets, :next_label => "Older »", :previous_label => "« Recent" %> 
 <%= page_entries_info @tweets, :entry_name => "item" %>
+<%= link_to "(rss)", formatted_tweets_url(:rss) %>
