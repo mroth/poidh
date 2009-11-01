@@ -7,7 +7,7 @@ xml.rss :version => "2.0" do
     
     for tweet in @tweets
       xml.item do
-        xml.title "@#{tweet.observer_screen_name} wants pics of @#{tweet.culprit_screen_name}"
+        xml.title "@#{tweet.observer_screen_name} wants pics from @#{tweet.culprit_screen_name}"
         xml.description "#{twitter_avatar_mini_img tweet.culprit_screen_name}: #{tweet.culprit_msg}"
         xml.pubDate tweet.created_at.to_s(:rfc822)
         xml.link tweet_url(tweet)
