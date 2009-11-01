@@ -16,9 +16,15 @@ h1 img {
 #timeline li .observer {
 	font-style: italic;
 }
-#timeline li .contribute {
-
-	
+#timeline li .permalink {
+  position: relative;
+  float: right;
+  top: 15px;
+  font-size: x-small;
+}
+#timeline li .permalink a, #timeline li .permalink a:hover, #timeline li .permalink a:visited {
+  text-decoration: none;
+  color: gray;
 }
 #footer {
   margin-top: 10px;

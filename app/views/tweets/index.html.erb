@@ -7,10 +7,15 @@
 			<%= tweet.culprit_msg %>
 			<span class="timestamp"><%= time_ago_in_words tweet.culprit_msg_timestamp -%> ago</span>
 		</div>
-		<span class="observer">
-			<%= twitter_avatar_mini_img tweet.observer_screen_name -%>
-			<%= linked_screenname tweet.observer_screen_name -%> says <%= link_to "POIDH!", tweet.observer_msg_url, :title => tweet.observer_msg %>
-		</span>
+		<div class="subcontent">
+			<span class="observer">
+				<%= twitter_avatar_mini_img tweet.observer_screen_name -%>
+				<%= linked_screenname tweet.observer_screen_name -%> says <%= link_to "POIDH!", tweet.observer_msg_url, :title => tweet.observer_msg %>
+			</span>
+			<span class="permalink">
+				<%= link_to "\#", tweet, :title => "permalink for poidh \##{tweet.id}" %>
+			</span>
+		</div>
 	</li>
 <% end %>
 </ul>
