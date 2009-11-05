@@ -3,7 +3,7 @@ namespace :twitter do
   desc "Show log of most recent searches"
   task :log => :environment do
     Search.all.each do |sr|
-      puts "#{sr.id} (#{sr.created_at}): #{sr.candidates} candidates, #{sr.matched} matched."
+      puts "#{sr.id} (#{sr.created_at}): #{sr.candidates} candidates, #{sr.rejected_already_indexed} redundant, #{sr.matched} matched."
     end
   end
   
