@@ -4,7 +4,6 @@ ActionController::Routing::Routes.draw do |map|
     :action => 'index',
     :requirements => {:page => /\d+/ },
     :page => nil
-
   map.resources :tweets
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,5 +1,5 @@
 <% content_for :head do %>
-  <%= auto_discovery_link_tag(:rss, formatted_tweets_url(:rss), :title => "Most recent POIDH") -%>
+  <%= auto_discovery_link_tag(:rss, tweets_url(:rss), :title => "Most recent POIDH") -%>
 <% end %>
 
 <ul id="timeline">
@@ -30,4 +30,4 @@
 
 <%= will_paginate @tweets, :next_label => "Older »", :previous_label => "« Recent" %> 
 <%= page_entries_info @tweets, :entry_name => "item" %>
-<%= link_to "(rss)", formatted_tweets_url(:rss) %>
+<%= link_to "(rss)", tweets_url(:rss) %>
