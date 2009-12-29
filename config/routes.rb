@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.connect '/tweets/index/:page',
+    :controller => 'tweets',
+    :action => 'index',
+    :requirements => {:page => /\d+/ },
+    :page => nil
+
   map.resources :tweets
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -31,6 +37,7 @@ ActionController::Routing::Routes.draw do |map|
   #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
   #     admin.resources :products
   #   end
+
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   # map.root :controller => "welcome"
