@@ -22,12 +22,11 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem 'httparty', :version => '= 0.4.3'
+  config.gem 'httparty',      :version => '= 0.4.3'
   config.gem 'twitter'
-  config.gem 'whenever', :source => 'http://gemcutter.org'
+  config.gem 'whenever',      :source => 'http://gemcutter.org'
   config.gem 'will_paginate', :source => 'http://gemcutter.org'
   config.gem 'mattetti-googlecharts', :lib => 'gchart', :source => 'http://gems.github.com'
-  # config.gem 'thoughtbot-paperclip',    :lib => 'paperclip',      :source => 'http://gems.github.com'
 
 
   # Only load the plugins named here, in the order given (default is alphabetical).
