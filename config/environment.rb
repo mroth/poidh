@@ -27,6 +27,7 @@ Rails::Initializer.run do |config|
   config.gem 'whenever',      :source => 'http://gemcutter.org'
   config.gem 'will_paginate', :source => 'http://gemcutter.org'
   config.gem 'mattetti-googlecharts', :lib => 'gchart', :source => 'http://gems.github.com'
+  config.gem 'newrelic_rpm',  :source => 'http://gemcutter.org'
 
 
   # Only load the plugins named here, in the order given (default is alphabetical).
