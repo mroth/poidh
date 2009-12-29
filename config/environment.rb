@@ -23,9 +23,9 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'httparty', :version => '= 0.4.3'
-  config.gem 'jnunemaker-twitter', :lib => 'twitter', :source => 'http://gems.github.com'
-  config.gem 'javan-whenever', :lib => false, :source => 'http://gems.github.com'
-  config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com'
+  config.gem 'twitter'
+  config.gem 'whenever', :source => 'http://gemcutter.org'
+  config.gem 'will_paginate', :source => 'http://gemcutter.org'
   config.gem 'mattetti-googlecharts', :lib => 'gchart', :source => 'http://gems.github.com'
   # config.gem 'thoughtbot-paperclip',    :lib => 'paperclip',      :source => 'http://gems.github.com'
 
