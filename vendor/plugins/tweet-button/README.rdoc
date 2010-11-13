@@ -1,0 +1,80 @@
+= tweet-button
+
+Jeremy McAnally - Intridea
+
+A gem/plugin to generate those nifty new Twitter buttons.
+
+== Installation
+
+**On Rails 3.x,** add the gem to your Gemfile (if you're using Bundler).
+
+    gem "tweet-button"
+
+Otherwise, just +require+ +'tweet_button'+.
+
+**On Rails 2.x,** do...
+
+    script/plugin install git://github.com/intridea/tweet-button.git
+    
+Done.  The project's +init.rb+ will take things from there.
+
+== Usage
+
+First, include +TweetButton+ into your application helper.  After that, using it is as simple as adding a single method call to your views:
+
+    <%= tweet_button %>
+    
+Bam.  Done.  You'll have a sweet lookin' Tweet button all up in your view.
+
+Of course, you can customize it.  The method takes a few options (any default can be overridden universally; read on...):
+
+* +:url+ - The URL to share; the default is the current URL.
+* +:text+ - The text that will appear in the tweet; the default is "Check this out!"
+* +:via+ - The attribution.  Defaults to "tweetbutton", but you should change that.
+* +:lang+ - Set the language for the tweet (no default).
+* +:related+ - Related Twitter accounts (no default).
+* +:count+ - The tweet count box position (values can be "none", "horizontal", or "vertical"; default is "vertical").
+
+So, if you wanted to tweet about Hacker News, attribute it to Peter Cooper, and add some custom text, all from a tweet button with a horizontal counter, you'd do this:
+
+    <%= tweet_button(:via => "peterc", :url => "http://news.ycombinator.com", :text => "AWESOME.")
+    
+Simple enough, eh?  Also, this method call will include the Twitter JavaScript into the page (it only does it once, even if you have multiple buttons on the page).  To put this wherever you'd like (i.e., your header), then use the +tweet_widgets_js_tag+ method.  If you call this method, it will place the tag wherever you call it from (and only place it there; subsequent calls do nothing).
+
+The gem also supports the custom Twitter share links.  To generate one, use the +custom_tweet_button+ (aliased to +custom_tweet_link+ also) method:
+
+    <%= custom_tweet_button %>
+    
+This will generate a link that will link to the share page with the same default options as the standard Tweet Button generator.  You can customize your custom link with text as the first argument, the same options as +tweet_button+ (with the exception of the +count+ parameter, which will be ignored) as the second, and HTML options as a third argument.  For example:
+
+    <%= custom_tweet_button('Tweet it!', {:via => "myself"}, {:class => "tweet-sharey-thing"})
+
+== Setting universal defaults
+
+You can set a new default for any option by setting +default_tweet_button_options+ in your application helper.  For example:
+
+    module ApplicationHelper
+      include TweetButton
+      
+      TweetButton.default_tweet_button_options = {:via => "myself"}
+    end
+
+Only the options you specify will be overridden; so if you only specify a new default +:via+ (which you should definitely do), then the other defaults will stay intact.
+
+== TODO
+
+Probably add the iframe capability.
+
+== Note on Patches/Pull Requests
+ 
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don't break it in a
+  future version unintentionally.
+* Commit, do not mess with rakefile, version, or history.
+  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
+* Send me a pull request. Bonus points for topic branches.
+
+== Copyright
+
+Copyright (c) 2010 Jeremy McAnally. See LICENSE for details.

@@ -17,6 +17,7 @@
 				<%= linked_screenname tweet.observer_screen_name -%> says <%= link_to "POIDH!", tweet.observer_msg_url, :title => tweet.observer_msg %>
 			</span>
 			<span class="permalink">
+				<%= my_tweet_button(tweet) %>
 				<%= link_to "\#", tweet, :title => "permalink for poidh \##{tweet.id}" %>
 			</span>
 		</div>

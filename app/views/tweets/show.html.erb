@@ -9,6 +9,14 @@
 		<span class="observer">
 			<%= twitter_avatar_mini_img @tweet.observer_screen_name -%>
 			<%= linked_screenname @tweet.observer_screen_name -%> says <%= link_to "POIDH!", @tweet.observer_msg_url, :title => @tweet.observer_msg %>
+			<!-- <%= tweet_button( 
+							:text => "\""+ @tweet.culprit_msg +  "\" @"+ @tweet.culprit_screen_name, 
+							:via => 'poidhdotorg', 
+							:count => 'horizontal', 
+							:url => 'http://poidh.org' + tweet_path(@tweet),
+							:related => @tweet.culprit_screen_name
+						) %> -->
+			<%= my_tweet_button(@tweet) %>
 		</span>
 	</li>
 </ul>
