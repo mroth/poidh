@@ -2,33 +2,15 @@
   <%= auto_discovery_link_tag(:rss, tweets_url(:rss), :title => "Most recent POIDH") -%>
 <% end %>
 
-<ul id="timeline">
-<% @tweets.each do |tweet| %>
-	<li id='tweet-<%= tweet.culprit_msg_id -%>' class='tweet'>
-		<div class="culprit_avatar"><%= twitter_avatar_img tweet.culprit_screen_name %></div>
-		<div class="culprit_msg">
-			<b><%= linked_screenname tweet.culprit_screen_name -%>:</b>
-			<%= tweet.culprit_msg %>
-			<span class="timestamp"><%= time_ago_in_words tweet.culprit_msg_timestamp -%> ago</span>
-		</div>
-		<div class="subcontent">
-			<span class="observer">
-				<%= twitter_avatar_mini_img tweet.observer_screen_name -%>
-				<%= linked_screenname tweet.observer_screen_name -%> says <%= link_to "POIDH!", tweet.observer_msg_url, :title => tweet.observer_msg %>
-			</span>
-			<span class="permalink">
-				<%= my_tweet_button(tweet) %>
-				<%= link_to "\#", tweet, :title => "permalink for poidh \##{tweet.id}" %>
-			</span>
-		</div>
-	</li>
-<% end %>
-</ul>
-
-<div id="sparkline">
-	<%= Gchart.sparkline(:data => @sparkvals.values, :size => '100x20', :line_colors => '0077CC', :format => 'image_tag') %>
+<div id="content">
+<ul id="timeline"><%= render :partial => 'timeline' %></ul>
+<div id="pagination"><%= render :partial => 'pagination' %></div>
 </div>
 
-<%= will_paginate @tweets, :next_label => "Older »", :previous_label => "« Recent" %> 
-<%= page_entries_info @tweets, :entry_name => "item" %>
-<%= link_to "(rss)", tweets_url(:rss) %>
+<div id="about" class="callout border-callout">
+<%= render :partial => 'about' %>
+
+<b class="border-notch notch"></b>
+<b class="notch"></b>
+</div>
+

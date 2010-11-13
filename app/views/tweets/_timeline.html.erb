@@ -1,0 +1,20 @@
+<% @tweets.each do |tweet| %>
+	<li id='tweet-<%= tweet.culprit_msg_id -%>' class='tweet'>
+		<div class="culprit_avatar"><%= twitter_avatar_img tweet.culprit_screen_name %></div>
+		<div class="culprit_msg">
+			<b><%= linked_screenname tweet.culprit_screen_name -%>:</b>
+			<%= tweet.culprit_msg %>
+			<span class="timestamp"><%= time_ago_in_words tweet.culprit_msg_timestamp -%> ago</span>
+		</div>
+		<div class="subcontent">
+			<span class="observer">
+				<%= twitter_avatar_mini_img tweet.observer_screen_name -%>
+				<%= linked_screenname tweet.observer_screen_name -%> says <%= link_to "POIDH!", tweet.observer_msg_url, :title => tweet.observer_msg %>
+			</span>
+			<span class="permalink">
+				<%= my_tweet_button(tweet) %>
+				<%= link_to "\#", tweet, :title => "permalink for poidh \##{tweet.id}" %>
+			</span>
+		</div>
+	</li>
+<% end %>
