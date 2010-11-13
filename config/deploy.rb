@@ -17,7 +17,7 @@ set :scm_verbose, true
 
 #stuff for local git (from dreamhost cap tutorial)
 set :scm_command, "/home/mroth/packages/bin/git" #updated version of git on  server in user directory
-set :local_scm_command, "/opt/local/bin/git" #correct path to local git
+set :local_scm_command, "/usr/local/bin/git" #correct path to local git
 
 # roles (servers)
 role :web, domain
