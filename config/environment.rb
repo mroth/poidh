@@ -4,7 +4,7 @@
 ENV['GEM_PATH'] = '/home/mroth/.gems:/usr/lib/ruby/gems/1.8'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.14' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -23,10 +23,12 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'httparty',      :version => '= 0.4.3'
-  config.gem 'twitter'
+  config.gem 'twitter', :version => '= 1.7.2'
   config.gem 'whenever',      :source => 'http://gemcutter.org'
-  config.gem 'will_paginate', :source => 'http://gemcutter.org'
-  config.gem 'mattetti-googlecharts', :lib => 'gchart', :source => 'http://gems.github.com'
+  #config.gem 'will_paginate', :source => 'http://gemcutter.org'
+  config.gem 'will_paginate', :version => '~> 2.3.16'
+  #config.gem 'mattetti-googlecharts', :lib => 'gchart', :source => 'http://gems.github.com'
+  config.gem 'googlecharts'
   config.gem 'newrelic_rpm',  :source => 'http://gemcutter.org'
 
 
